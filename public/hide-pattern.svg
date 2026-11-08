@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200">
+  <defs>
+    <!-- 타원 묶음을 유기적인 얼룩 모양으로 일그러뜨리고, 가장자리를 털처럼 보송하게 -->
+    <filter id="spot" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="3" seed="7" result="warp" />
+      <feDisplacementMap in="SourceGraphic" in2="warp" scale="90" xChannelSelector="R" yChannelSelector="G" result="shape" />
+      <feTurbulence type="fractalNoise" baseFrequency="0.55" numOctaves="2" seed="3" result="fuzz" />
+      <feDisplacementMap in="shape" in2="fuzz" scale="14" xChannelSelector="R" yChannelSelector="G" result="furry" />
+      <feGaussianBlur in="furry" stdDeviation="5" />
+    </filter>
+    <!-- 얼룩 둘레의 적갈색 번짐 -->
+    <filter id="halo" x="-15%" y="-15%" width="130%" height="130%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="3" seed="7" result="warp" />
+      <feDisplacementMap in="SourceGraphic" in2="warp" scale="90" xChannelSelector="R" yChannelSelector="G" />
+      <feGaussianBlur stdDeviation="24" />
+    </filter>
+    <!-- 털 결(세로로 길게 늘어진 미세 노이즈) -->
+    <filter id="fur" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9 0.05" numOctaves="2" seed="11" />
+      <feColorMatrix type="matrix" values="0 0 0 0 0.1  0 0 0 0 0.07  0 0 0 0 0.05  0 0 0 -1.3 0.75" />
+    </filter>
+    <g id="spots">
+      <!-- 왼쪽 위 -->
+      <ellipse cx="90" cy="120" rx="200" ry="170" />
+      <ellipse cx="220" cy="260" rx="120" ry="140" />
+      <ellipse cx="40" cy="330" rx="110" ry="90" />
+      <!-- 위쪽 가운데 손가락 모양 -->
+      <ellipse cx="560" cy="60" rx="38" ry="110" />
+      <ellipse cx="690" cy="90" rx="50" ry="90" />
+      <!-- 가운데 큰 얼룩 (이름·소개 뒤) -->
+      <ellipse cx="600" cy="320" rx="230" ry="190" />
+      <ellipse cx="460" cy="470" rx="130" ry="110" />
+      <ellipse cx="730" cy="500" rx="150" ry="120" />
+      <ellipse cx="600" cy="610" rx="90" ry="80" />
+      <ellipse cx="840" cy="280" rx="80" ry="100" />
+      <!-- 오른쪽 위 -->
+      <ellipse cx="1090" cy="150" rx="170" ry="200" />
+      <ellipse cx="970" cy="340" rx="90" ry="70" />
+      <ellipse cx="1160" cy="390" rx="90" ry="120" />
+      <!-- 왼쪽 아래 -->
+      <ellipse cx="150" cy="830" rx="180" ry="150" />
+      <ellipse cx="60" cy="990" rx="140" ry="170" />
+      <ellipse cx="290" cy="960" rx="90" ry="80" />
+      <!-- 아래 가운데 -->
+      <ellipse cx="620" cy="1070" rx="230" ry="140" />
+      <ellipse cx="480" cy="960" rx="90" ry="110" />
+      <ellipse cx="810" cy="1000" rx="90" ry="80" />
+      <!-- 오른쪽 아래 -->
+      <ellipse cx="1100" cy="820" rx="130" ry="110" />
+      <ellipse cx="1180" cy="1060" rx="120" ry="160" />
+      <!-- 작은 점 -->
+      <ellipse cx="350" cy="650" rx="42" ry="32" />
+      <ellipse cx="940" cy="700" rx="36" ry="46" />
+      <ellipse cx="300" cy="560" rx="26" ry="20" />
+    </g>
+  </defs>
+
+  <rect width="1200" height="1200" fill="#e6dfd5" />
+
+  <!-- 적갈색 번짐: 일부 얼룩에만 -->
+  <g fill="#5e3022" fill-opacity="0.6" filter="url(#halo)">
+    <ellipse cx="150" cy="840" rx="200" ry="175" />
+    <ellipse cx="290" cy="960" rx="110" ry="100" />
+    <ellipse cx="460" cy="490" rx="150" ry="130" />
+    <ellipse cx="620" cy="1060" rx="250" ry="160" />
+    <ellipse cx="480" cy="960" rx="110" ry="130" />
+    <ellipse cx="840" cy="290" rx="100" ry="120" />
+  </g>
+
+  <use href="#spots" fill="#1c1310" filter="url(#spot)" />
+
+  <rect width="1200" height="1200" filter="url(#fur)" opacity="0.14" />
+</svg>

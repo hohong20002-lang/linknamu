@@ -1,14 +1,18 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Black_Han_Sans, Do_Hyeon } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// 본문·링크용 각진 고딕
+const doHyeon = Do_Hyeon({
+  variable: "--font-do-hyeon",
+  weight: "400",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+// 이름(제목)용 굵은 각진 고딕
+const blackHanSans = Black_Han_Sans({
+  variable: "--font-black-han-sans",
+  weight: "400",
   subsets: ["latin"],
 });
 
@@ -21,7 +25,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="ko"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${doHyeon.variable} ${blackHanSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
