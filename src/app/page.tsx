@@ -1,17 +1,11 @@
 import Image from "next/image";
+import LinkList from "./link-list";
 
 const profile = {
   name: "박서홍",
   bio: "어서오세요 :) 웹 개발을 공부하고 있습니다.",
   imageSrc: "/profile.jpg",
 };
-
-// TODO: GitHub·LinkedIn은 실제 주소로 교체하세요.
-const links = [
-  { label: "GitHub", description: "코드와 프로젝트", href: "https://github.com/" },
-  { label: "LinkedIn", description: "경력과 이력", href: "https://www.linkedin.com/" },
-  { label: "Instagram", description: "일상과 사진", href: "https://www.instagram.com/hohong20002/" },
-];
 
 export default function Home() {
   return (
@@ -32,29 +26,7 @@ export default function Home() {
           {profile.bio}
         </p>
 
-        <ul className="mt-14 flex w-full flex-col gap-5">
-          {links.map((link) => (
-            <li key={link.label}>
-              <a
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex items-center justify-between rounded-3xl border border-white/10 bg-[var(--card)] px-7 py-5 shadow-lg shadow-black/25 transition-colors duration-200 hover:bg-[var(--card-hover)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
-              >
-                <span className="flex flex-col gap-1">
-                  <span className="text-xl text-white">{link.label}</span>
-                  <span className="text-sm text-white/65">{link.description}</span>
-                </span>
-                <span
-                  aria-hidden
-                  className="text-xl text-white/60 transition-transform duration-200 group-hover:translate-x-1"
-                >
-                  →
-                </span>
-              </a>
-            </li>
-          ))}
-        </ul>
+        <LinkList />
       </div>
     </main>
   );
