@@ -64,7 +64,7 @@ export default function LinkList() {
               <span className="text-sm text-white/65">{link.description}</span>
             </span>
             <span className="flex shrink-0 items-center gap-3">
-              <span className="text-xs tabular-nums text-white/55" aria-label={`클릭 ${counts[link.id]}회`}>
+              <span className="rounded-full bg-black/25 px-2.5 py-1 text-sm tabular-nums text-white/90" aria-label={`클릭 ${counts[link.id]}회`}>
                 {counts[link.id].toLocaleString("ko-KR")}회
               </span>
               <span
